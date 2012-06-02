@@ -18,7 +18,7 @@ public:
 private:
 	Map map;
 	Player players[2];
-	uint8_t score[2];
+	int8_t score[2];
 };
 
 #endif

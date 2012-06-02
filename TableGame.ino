@@ -1,7 +1,7 @@
 #include <PS2X_lib.h>
 #include <HT1632.h>
 
-#include "Game.h"
+#include "Game_Pong.h"
 
 //  - Pins -
 // Display
@@ -10,6 +10,7 @@
 #define CS_1 4
 #define CS_2 5
 #define CS_3 6
+#define CS_4 7
 
 // Controller
 #define CTRL_CLK 9
@@ -19,7 +20,7 @@
 #define CTRL_CS_2 8
 
 
-HT1632LEDMatrix screen = HT1632LEDMatrix(DATA, WR, CS_1, CS_2, CS_3);
+HT1632LEDMatrix screen = HT1632LEDMatrix(DATA, WR, CS_1, CS_2, CS_3, CS_4);
 PS2X controller_1;
 PS2X controller_2;
 
@@ -34,7 +35,7 @@ void setup()
   delay(100);
   screen.setTextSize(1);
   screen.setTextColor(1);
-  screen.setBrightness(0);
+  screen.setBrightness(6);
   screen.clearScreen();
   screen.writeScreen();
 }
@@ -42,7 +43,8 @@ void setup()
 
 void loop()
 {
-  Game game(0, screen.width(), screen.height());
+//  Game game(0, screen.width(), screen.height());
+  GamePong game(screen.width(), screen.height());
   
   while(true)
   {
