@@ -2,24 +2,28 @@
 #define GAME_SNAKETRON_H
 
 #include "Geometary.h"
+#include "LinkedList.h"
 
+class PS2X;
+class HT1632LEDMatrix;
 
 class Snake
 {
 public:
-	Snake(uint8_t x, uint8_t y);
-	void update(PS2X*);
+	Snake(const Point&);
+	void update(PS2X*, bool paused);
 	void render(HT1632LEDMatrix* display);
+	
+	void reset(const Point&);
+	bool intersects(const Point&);
+	bool bounds(uint8_t width, uint8_t height);
 
-	struct Segment
-	{
-		Line shape;
-		uint8_t length;
-		Segment* next;
-		Segment* prev;
-	};
-	Segment* section_start;
-	Segment* section_end;
+	LinkedList<Line> body;
+	
+	uint8_t dx, dy;
+	bool ready;
+	uint16_t length;
+	uint16_t score;
 };
 
 class GameSnaketron
@@ -28,10 +32,12 @@ public:
 	GameSnaketron(uint8_t width, uint8_t height);
 	void render(HT1632LEDMatrix* display);
 	void update(PS2X*, PS2X*);
+	
 	Snake player_1;
 	Snake player_2;
-	uint8_t width;
-	uint8_t height;
+	uint8_t width, height;
+	bool playing;
+	Point pill;
 };
 
 #endif

@@ -1,7 +1,8 @@
 #include <PS2X_lib.h>
 #include <HT1632.h>
 
-#include "Game_Pong.h"
+//#include "Game_Pong.h"
+#include "Game_Snaketron.h"
 
 //  - Pins -
 // Display
@@ -44,7 +45,8 @@ void setup()
 void loop()
 {
 //  Game game(0, screen.width(), screen.height());
-  GamePong game(screen.width(), screen.height());
+//  GamePong game(screen.width(), screen.height());
+  GameSnaketron game(screen.width(), screen.height());
   
   while(true)
   {
