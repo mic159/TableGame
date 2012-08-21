@@ -1,0 +1,21 @@
+This is my game system that uses 4 LED matrix HT1632 modules to form the screen and two PS2 controllers for input.
+
+The HT1632 library was modified to support my layout, and the fork lives here: https://github.com/mic159/HT1632
+
+The PS2 library is here: https://github.com/madsci1016/Arduino-PS2X
+
+The pins are:
+Arduino     Display
+  2     ->   DATA (on all HT1632 chips)
+  3     ->   WR (on all HT1632 chips)
+  4     ->   CS on chip 1
+  5     ->   CS on chip 2
+  6     ->   CS on chip 3
+  7     ->   CS on chip 4
+
+Arduino     PS2
+  9     ->   CLK (on both controllers)
+  10    ->   DAT (on both controllers)
+  11    ->   CMD (on both controllers)
+  12    ->   CS on controller 1
+  13    ->   CS on controller 2
